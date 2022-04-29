@@ -218,3 +218,167 @@ UPDATE animals
 	SET owner_id = owners.id
 FROM owners 
 WHERE animals.name in ('Angemon', 'Boarmon') and owners.full_name = 'Dean Winchester';
+
+
+/*Populate vets table*/
+
+INSERT INTO vets (
+	name,
+	age,
+	date_of_graduation
+) VALUES (
+	'William Tatcher', 
+	45,
+	'2000-04-23'
+);
+
+INSERT INTO vets (
+	name,
+	age,
+	date_of_graduation
+) VALUES (
+	'Maisy Smith', 
+	26,
+	'2019-01-17'
+);
+
+INSERT INTO vets (
+	name,
+	age,
+	date_of_graduation
+) VALUES (
+	'Stephanie Mendez', 
+	64,
+	'1981-05-04'
+);
+
+INSERT INTO vets (
+	name,
+	age,
+	date_of_graduation
+) VALUES (
+	'Jack Harkness', 
+	38,
+	'2008-06-08'
+);
+
+
+/*Populate specializations table*/
+
+INSERT INTO specializations (specie_id, vet_id) 
+SELECT species.id , vets.id
+FROM species
+INNER JOIN vets ON vets.name = 'William Tatcher' AND species.name = 'Pokemon';
+
+INSERT INTO specializations (specie_id, vet_id) 
+SELECT species.id , vets.id
+FROM species
+INNER JOIN vets ON vets.name = 'Stephanie Mendez' AND species.name IN ('Digimon', 'Pokemon');
+
+INSERT INTO specializations (specie_id, vet_id) 
+SELECT species.id , vets.id
+FROM species
+INNER JOIN vets ON vets.name = 'Jack Harkness' AND species.name = 'Digimon';
+
+
+/*Populate visits table*/
+
+INSERT INTO visits (animal_id, vet_id, visit_date) 
+SELECT animals.id , vets.id , '2020-05-24'
+FROM animals
+INNER JOIN vets ON vets.name = 'William Tatcher' AND animals.name = 'Agumon';
+
+INSERT INTO visits (animal_id, vet_id, visit_date) 
+SELECT animals.id , vets.id , '2020-06-22'
+FROM animals
+INNER JOIN vets ON vets.name = 'Stephanie Mendez' AND animals.name = 'Agumon';
+
+INSERT INTO visits (animal_id, vet_id, visit_date) 
+SELECT animals.id , vets.id , '2021-02-02'
+FROM animals
+INNER JOIN vets ON vets.name = 'Jack Harkness' AND animals.name = 'Gabumon';
+
+INSERT INTO visits (animal_id, vet_id, visit_date) 
+SELECT animals.id , vets.id , '2020-01-05'
+FROM animals
+INNER JOIN vets ON vets.name = 'Maisy Smith' AND animals.name = 'Pikachu';
+
+INSERT INTO visits (animal_id, vet_id, visit_date) 
+SELECT animals.id , vets.id , '2020-03-08'
+FROM animals
+INNER JOIN vets ON vets.name = 'Maisy Smith' AND animals.name = 'Pikachu';
+
+INSERT INTO visits (animal_id, vet_id, visit_date) 
+SELECT animals.id , vets.id , '2020-05-14'
+FROM animals
+INNER JOIN vets ON vets.name = 'Maisy Smith' AND animals.name = 'Pikachu';
+
+INSERT INTO visits (animal_id, vet_id, visit_date) 
+SELECT animals.id , vets.id , '2021-05-04'
+FROM animals
+INNER JOIN vets ON vets.name = 'Stephanie Mendez' AND animals.name = 'Devimon';
+
+INSERT INTO visits (animal_id, vet_id, visit_date) 
+SELECT animals.id , vets.id , '2021-02-24'
+FROM animals
+INNER JOIN vets ON vets.name = 'Jack Harkness' AND animals.name = 'Charmander';
+
+INSERT INTO visits (animal_id, vet_id, visit_date) 
+SELECT animals.id , vets.id , '2019-12-21'
+FROM animals
+INNER JOIN vets ON vets.name = 'Maisy Smith' AND animals.name = 'Plantmon';
+
+INSERT INTO visits (animal_id, vet_id, visit_date) 
+SELECT animals.id , vets.id , '2020-08-10'
+FROM animals
+INNER JOIN vets ON vets.name = 'William Tatcher' AND animals.name = 'Plantmon';
+
+INSERT INTO visits (animal_id, vet_id, visit_date) 
+SELECT animals.id , vets.id , '2021-04-07'
+FROM animals
+INNER JOIN vets ON vets.name = 'Maisy Smith' AND animals.name = 'Plantmon';
+
+INSERT INTO visits (animal_id, vet_id, visit_date) 
+SELECT animals.id , vets.id , '2019-09-29'
+FROM animals
+INNER JOIN vets ON vets.name = 'Stephanie Mendez' AND animals.name = 'Squirtle';
+
+INSERT INTO visits (animal_id, vet_id, visit_date) 
+SELECT animals.id , vets.id , '2020-10-03'
+FROM animals
+INNER JOIN vets ON vets.name = 'Jack Harkness' AND animals.name = 'Angemon';
+
+INSERT INTO visits (animal_id, vet_id, visit_date) 
+SELECT animals.id , vets.id , '2020-11-04'
+FROM animals
+INNER JOIN vets ON vets.name = 'Jack Harkness' AND animals.name = 'Angemon';
+
+INSERT INTO visits (animal_id, vet_id, visit_date) 
+SELECT animals.id , vets.id , '2019-01-24'
+FROM animals
+INNER JOIN vets ON vets.name = 'Maisy Smith' AND animals.name = 'Boarmon';
+
+INSERT INTO visits (animal_id, vet_id, visit_date) 
+SELECT animals.id , vets.id , '2019-05-15'
+FROM animals
+INNER JOIN vets ON vets.name = 'Maisy Smith' AND animals.name = 'Boarmon';
+
+INSERT INTO visits (animal_id, vet_id, visit_date) 
+SELECT animals.id , vets.id , '2020-02-27'
+FROM animals
+INNER JOIN vets ON vets.name = 'Maisy Smith' AND animals.name = 'Boarmon';
+
+INSERT INTO visits (animal_id, vet_id, visit_date) 
+SELECT animals.id , vets.id , '2020-08-03'
+FROM animals
+INNER JOIN vets ON vets.name = 'Maisy Smith' AND animals.name = 'Boarmon';
+
+INSERT INTO visits (animal_id, vet_id, visit_date) 
+SELECT animals.id , vets.id , '2020-05-24'
+FROM animals
+INNER JOIN vets ON vets.name = 'Stephanie Mendez' AND animals.name = 'Boarmon';
+
+INSERT INTO visits (animal_id, vet_id, visit_date) 
+SELECT animals.id , vets.id , '2021-01-11'
+FROM animals
+INNER JOIN vets ON vets.name = 'William Tatcher' AND animals.name = 'Boarmon';
