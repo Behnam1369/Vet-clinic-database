@@ -273,7 +273,7 @@ INNER JOIN vets ON vets.name = 'William Tatcher' AND species.name = 'Pokemon';
 INSERT INTO specializations (specie_id, vet_id) 
 SELECT species.id , vets.id
 FROM species
-INNER JOIN vets ON vets.name = 'Stephanie Mendez' AND species.name = 'Pokemon';
+INNER JOIN vets ON vets.name = 'Stephanie Mendez' AND species.name IN ('Digimon', 'Pokemon');
 
 INSERT INTO specializations (specie_id, vet_id) 
 SELECT species.id , vets.id
