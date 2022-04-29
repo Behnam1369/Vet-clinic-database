@@ -50,3 +50,32 @@ ALTER TABLE animals ADD species_id int REFERENCES species (id);
 
 ALTER TABLE animals ADD owner_id  int REFERENCES owners (id);
 
+
+/*Create vets table*/
+
+CREATE TABLE vets (
+	id INT, 
+	name VARCHAR(100),
+	age INT,
+	date_of_graduation DATE,
+	PRIMARY KEY (id)
+);
+
+
+/*Create specializations table*/
+
+CREATE TABLE specializations (
+	specie_id INT REFERENCES  species (id), 
+	vet_id INT REFERENCES  vets (id) 
+);
+
+
+/*Create visits table*/
+
+CREATE TABLE visits (
+	animal_id INT REFERENCES  animals (id), 
+	vet_id INT REFERENCES  vets (id) ,
+	visit_date date
+);
+
+
