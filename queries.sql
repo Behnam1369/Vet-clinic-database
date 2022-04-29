@@ -46,33 +46,6 @@ select * from animals
 WHERE weight_kg between 10.4 and 17.3;
 
 
-/*Inside a transaction update the animals table by setting the species column to unspecified. 
-Verify that change was made. Then roll back the change and verify that species columns went back to the state before transaction.
-*/
-
--- BEGIN TRANSACTION;
-
--- UPDATE animals SET species = 'unspecified'; 
-
--- SELECT * FROM animals;
-
--- ROLLBACK TRANSACTION;
-
--- SELECT * FROM animals;
-
-
-/*Update species based on name*/
-
--- BEGIN TRANSACTION;
-
--- UPDATE animals SET species = 'digimon' WHERE name LIKE '%mon'; 
--- UPDATE animals SET species = 'pokemon' WHERE species IS NULL; 
-
--- COMMIT TRANSACTION;
-
--- SELECT * FROM animals;
-
-
 /*test deleting all records from the animal table*/
 
 BEGIN TRANSACTION;
@@ -126,21 +99,6 @@ SELECT name
 FROM animals 
 ORDER BY escape_attempts DESC
 limit 1;
-
-
-/*What is the minimum and maximum weight of each type of animal?*/
-
--- SELECT species , MIN(weight_kg) as MIN_WEIGHT , MAX(weight_kg) AS MAX_WEIGHT 
--- FROM animals 
--- GROUP BY species;
-
-
-/*What is the average number of escape attempts per animal type of those born between 1990 and 2000?*/
-
--- SELECT species , AVG(escape_attempts) as AVERAGE_ESCAPES
--- FROM animals 
--- WHERE date_of_birth between '1990-01-01' and '2000-12-31' 
--- GROUP BY species;
 
 
 /*What animals belong to Melody Pond?*/
