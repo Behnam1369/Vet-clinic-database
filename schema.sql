@@ -54,10 +54,10 @@ ALTER TABLE animals ADD owner_id  int REFERENCES owners (id);
 /*Create vets table*/
 
 CREATE TABLE vets (
-	id INT, 
-	name VARCHAR(100),
-	age INT,
-	date_of_graduation DATE,
+	id int GENERATED ALWAYS AS IDENTITY, 
+	name varchar(100),
+	age int,
+	date_of_graduation date,
 	PRIMARY KEY (id)
 );
 
@@ -65,16 +65,16 @@ CREATE TABLE vets (
 /*Create specializations table*/
 
 CREATE TABLE specializations (
-	specie_id INT REFERENCES  species (id), 
-	vet_id INT REFERENCES  vets (id) 
+	specie_id int REFERENCES  species (id), 
+	vet_id int REFERENCES  vets (id) 
 );
 
 
 /*Create visits table*/
 
 CREATE TABLE visits (
-	animal_id INT REFERENCES  animals (id), 
-	vet_id INT REFERENCES  vets (id) ,
+	animal_id int REFERENCES  animals (id), 
+	vet_id int REFERENCES  vets (id) ,
 	visit_date date
 );
 
