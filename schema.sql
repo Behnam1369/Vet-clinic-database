@@ -78,6 +78,7 @@ CREATE TABLE visits (
 	visit_date date
 );
 
+
 -- 1
 CREATE INDEX IF NOT EXISTS animal_id
     ON public.visits USING btree
@@ -87,6 +88,15 @@ CREATE INDEX IF NOT EXISTS animal_id
 ALTER TABLE IF EXISTS public.visits
     CLUSTER ON animal_id;
 
+-- 2
+CREATE INDEX IF NOT EXISTS vet_id_index
+    ON public.visits USING btree
+    (vet_id ASC NULLS LAST)
+    INCLUDE(animal_id, visit_date)
+    TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.visits
+    CLUSTER ON vet_id_index;
 
 
 -- 3
