@@ -79,3 +79,10 @@ CREATE TABLE visits (
 );
 
 
+CREATE INDEX IF NOT EXISTS animal_id
+    ON public.visits USING btree
+    (animal_id ASC NULLS LAST)
+    TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.visits
+    CLUSTER ON animal_id;
